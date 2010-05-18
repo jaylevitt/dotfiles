@@ -24,19 +24,17 @@ sub install {
 	$pretty_path = $dest_path;
 	$pretty_path =~ s|^$home/|~/|;
 
-	print "Installing $pretty_path";
-
 	unless (-d "$dest_base_path") {
 		`mkdir -p $dest_base_path` or die "\nmkdir: $!";
 	}
 
 	if (`diff "$source_path" "$dest_path"`) {
-		print "\n";
-		`cp -i "$source_path" "$dest_path"` or die "\ncp: $!";
+		print "Installing $pretty_path\n";
+		`cp -i "$source_path" "$dest_path"`;
 	}
 	else
 	{
-		print "...skipping\n";
+		print "Skipping $pretty_path\n";
 	}
 }
 
