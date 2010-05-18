@@ -5,16 +5,21 @@ use Cwd 'abs_path';
 
 sub main {
 
+	install("_root/etc/zshenv", "sudo");
+
 	if (`uname -s` =~ /Darwin/) {
 		install("_home/Library/KeyBindings/DefaultKeyBinding.dict");
 		install("_home/Library/Application Support/TextMate/KeyBindings.dict");
-		install("_root/etc/zshenv");
+
+		install("_root/etc/paths.d/000-macports", "sudo");
+		install("_root/etc/paths.d/500-default", "sudo");
+		remove("/etc/paths", "sudo");
 	}
 
 }
 
 sub install {
-	my ($source_path) = @_;
+	my ($source_path, $sudo) = @_;
 
 	$home = $ENV{'HOME'};
 	my ($volume, $base_path, $file_name) = File::Spec->splitpath($source_path);
@@ -27,17 +32,27 @@ sub install {
 	$pretty_path =~ s|^$home/|~/|;
 
 	unless (-d "$dest_base_path") {
-		`mkdir -p $dest_base_path` or die "\nmkdir: $!";
+		`$sudo mkdir -p $dest_base_path` or die "\nmkdir: $!";
 	}
 
 	if (`diff "$source_path" "$dest_path"`) {
 		print "Installing $pretty_path\n";
-		`cp -i "$source_path" "$dest_path"`;
+		`$sudo cp -i "$source_path" "$dest_path"`;
 	}
 	else
 	{
 		print "Skipping $pretty_path\n";
 	}
+}
+
+sub remove {
+	my ($path, $sudo) = @_;
+	
+	if (-e $path) {
+		print "Removing $path\n";
+		`$sudo mv $path $path.old`;
+	}
+	
 }
 
 main
