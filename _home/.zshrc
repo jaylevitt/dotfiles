@@ -32,7 +32,7 @@ export SAVEHIST=10000
 autoload -U edit-command-line
 zle -N edit-command-line
 
-unalias run-help
+[[ -n $(alias run-help) ]] && unalias run-help
 autoload -U run-help
 export HELPDIR=~/.zsh-help
 
