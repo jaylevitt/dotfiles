@@ -1,0 +1,47 @@
+if [[ $hostname = "macpro.home.jay.fm" ]] then
+  alias eab="open ~/.zshrc.tmproj"
+else
+  alias eab="echo Do this from macpro!"
+  function pullab ()
+    {
+      cp ~/.zshrc ~/.zshrc.old
+      for file in `find ~/.zshrc.d -type f`
+      do
+        cp $file $file.old
+      done
+
+      scp macpro:.zshrc ~/.zshrc
+      scp -r macpro:.zshrc.d ~
+      rm ~/.zshrc.d/.DS_Store
+    }
+fi
+
+if [[ $ostype != "Darwin" ]] then
+  alias qmv="EDITOR=mate_wait qmv"
+fi
+
+alias l="ls $LS_FLAGS"
+alias ll="ls -l $LS_FLAGS"
+# alias ri="fri -P"
+alias hexdump="hexdump -C"
+alias trunc=":>"
+alias cls="clear"
+
+function apropos ()
+{
+  command apropos $* | egrep -v '\((2|3|3X|3x|3p|3pm|3tcl|3ssl|ntcl|n)\)' 
+}
+
+function cdt {
+	DocPath="$(osascript -e 'tell app "TextMate" to return path of first document')" 
+
+	DocDir="$(dirname "$DocPath")" 
+	echo "$PWD -> $DocDir"
+	cd $DocDir
+}
+
+
+# Finder interaction
+alias cdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt cd`' 
+alias pushdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt pushd`' 
+

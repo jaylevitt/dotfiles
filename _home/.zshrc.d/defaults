@@ -1,0 +1,34 @@
+# Defaults for specific commands
+export LESS='--no-init --quit-if-one-screen --ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS'
+export PAGER="$(which less)"
+export AUTOFEATURE=true
+# for ack defaults, see ~/.ackrc
+# FIXME: I seem to have killed lessopen with the syntax highlighting.  Replace it with Ruby anyway.
+# export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
+
+# Defaults for subsystems
+export PYTHONPATH=/opt/local/lib/python2.5/site-packages
+export TM_SCRATCH_DIRECTORY="/Users/jay/Library/Application Support/TextMate/Scratch Files"
+
+if [[ $jay_home = "yes" ]]; then
+  export PATH="$PATH:$HOME/bin"
+fi
+
+# Sneaky default replacements for commands that don't take defaults
+
+if [[ $ostype = "Darwin" ]]; then
+  export EDITOR="mate_wait" # crontab doesn't support "mate -w", but TextMate looks at its own name when called
+elif [[ -e "/usr/local/bin/mate" ]]; then
+  export EDITOR="mate"
+else
+  export EDITOR="vi"
+fi
+
+alias df="df -h"
+alias du="du -h"
+alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
+export LS_FLAGS="-FGh"
+alias ls="ls $LS_FLAGS"
+alias schroot="schroot -p -c"
+alias sudo='command sudo '				# let zsh aliases work in subshells of sudo
+

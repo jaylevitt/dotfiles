@@ -6,6 +6,13 @@ use Cwd 'abs_path';
 sub main {
 
 	install("_root/etc/zshenv", "sudo");
+	install("_home/.zshrc");
+	install("_home/.zshrc.d/aliases");
+	install("_home/.zshrc.d/completion");
+	install("_home/.zshrc.d/defaults");
+	install("_home/.zshrc.d/keys");
+	install("_home/.zshrc.d/title-prompt");
+	install("_home/.zshrc.d/x-display");
 
 	if (`uname -s` =~ /Darwin/) {
 		install("_home/Library/KeyBindings/DefaultKeyBinding.dict");
@@ -35,7 +42,7 @@ sub install {
 		`$sudo mkdir -p $dest_base_path` or die "\nmkdir: $!";
 	}
 
-	if (`diff "$source_path" "$dest_path"`) {
+	if (`diff -w "$source_path" "$dest_path"`) {
 		print "Installing $pretty_path\n";
 		`$sudo cp -i "$source_path" "$dest_path"`;
 	}

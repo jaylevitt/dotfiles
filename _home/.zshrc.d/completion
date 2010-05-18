@@ -1,0 +1,68 @@
+# Make backward-word, etc. stop on "/" (http://www.zsh.org/mla/users//2005/msg01430.html)
+WORDCHARS=${WORDCHARS//\/}
+
+# Completion: echo ~/.z<TAB> (p. 230)
+autoload -U compinit
+compinit
+# bashcompinit - could use bash completions somehow
+setopt magic_equal_subst	# complete after = sign, as in export PATH=
+unsetopt list_ambiguous		# show me all matches if ambiguous, instead of filling partially
+unsetopt list_beep
+
+zstyle ':completion:*:messages' format %d
+zstyle ':completion:*:warnings' format 'No matches: %d'
+
+zstyle ':completion:*:descriptions' format %B%d%b
+zstyle ':completion:*' auto-description 'specify: %d'
+
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' list-separator '#'
+
+zmodload zsh/complist
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+bindkey -M listscroll q send-break 
+bindkey -M listscroll '^[[B' down-line-or-history
+# Apparently, there's no corresponding up-line command in listscroll mode
+
+zstyle ':completion:*:default' menu 'select=0'
+bindkey -M menuselect ' ' accept-and-menu-complete
+
+zstyle ':completion:*:windows' menu on=0
+
+# Expansion: echo ~/.z*<TAB>  (p. 245)
+# TODO: I think that heading is not quite correct... the first style appears to apply
+# to all forms.  I'll have to refactor when I understand the differences more.
+bindkey '^I'			complete-word
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
+# TODO: p. 248 says that _correct and _approximate are nearly identical, but that
+# _correct dosn't allow extra characters.  That doesn't seem to be true anymore;
+# using _correct does an inline correction, where _approximate shows options?
+# zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX) /4 )) )'
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+
+
+# This would separate each category of completions: external command, builtin command,
+# alias, reserved word, parameter, etc.  I don't like it.
+#
+# TODO: Correction... I do like it for /etc/p* (from /etc/z*, p246).. 
+# what didn't I like it for?
+#
+zstyle ':completion:*' group-name ''
+
+# TODO: This would group commands, builtins, etc. together.  I would expect that it would
+# group them under the heading "commands", but it doesn't seem to do that; instead, it
+# shows:
+#
+# ~% no<TAB>
+# external command
+# builtin command
+# reserved word
+# nocorrect   noglob      nohup       nologin     notifyd     notifyutil
+#
+# I'm confused.
+#
+# zstyle ':completion:*:-command-:*:(commands|builtins|reserved-words|aliases)' group-name commands
