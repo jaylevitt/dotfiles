@@ -1,7 +1,7 @@
 # Mac-specific keys (some need to be added in Terminal Keyboard preference, and "Use option as meta key" must be enabled)
 bindkey -e 
 bindkey "^?"	backward-delete-char
-bbindkey '^[[3~'  		delete-char					# forward-delete
+bindkey '^[[3~'  		delete-char					# forward-delete
 bindkey '^[^[[C'	        forward-word				# option-right
 bindkey '^[^[[D'	        backward-word				# option-left
 bindkey '^[[1~'			beginning-of-line		# home
