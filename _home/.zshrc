@@ -9,7 +9,6 @@
 # See .zsh.readme.txt for cheat sheet
 
 zmodload zsh/datetime
-zmodload zsh/regex
 
 setopt interactive_comments				# Type # at a prompt for comment (in case I'm pasting)
 setopt correct					      				# if command not found
