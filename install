@@ -6,6 +6,7 @@ use Cwd 'abs_path';
 sub main {
 
 	install("_root/etc/zshenv", "sudo");
+	install("_home/.zshenv");
 	install("_home/.zshrc");
 	install("_home/.zshrc.d/aliases");
 	install("_home/.zshrc.d/completion");
