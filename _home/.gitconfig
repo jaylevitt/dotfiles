@@ -1,0 +1,22 @@
+[user]
+	name = Jay Levitt
+	email = jay@jay.fm
+[github]
+	user = jaylevitt
+[color]
+  diff = auto
+	status = auto
+	branch = auto
+[merge]
+	tool = xxdiff
+[alias]
+  unstage = reset HEAD
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+
+[diff "ruby"]
+  funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)

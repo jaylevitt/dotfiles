@@ -15,6 +15,9 @@ sub main {
 	install("_home/.zshrc.d/title-prompt");
 	install("_home/.zshrc.d/x-display");
 
+  install("_home/.ackrc");
+  install("_home/.gitconfig");
+  
 	if (`uname -s` =~ /Darwin/) {
 		install("_home/Library/KeyBindings/DefaultKeyBinding.dict");
 		install("_home/Library/Application Support/TextMate/KeyBindings.dict");
