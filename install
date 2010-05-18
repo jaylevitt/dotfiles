@@ -19,7 +19,8 @@ sub main {
 		install("_home/Library/KeyBindings/DefaultKeyBinding.dict");
 		install("_home/Library/Application Support/TextMate/KeyBindings.dict");
 
-		install("_root/etc/paths.d/000-macports", "sudo");
+		install("_root/etc/paths.d/000-mybin", "sudo");
+		install("_root/etc/paths.d/100-macports", "sudo");
 		install("_root/etc/paths.d/500-default", "sudo");
 		remove("/etc/paths", "sudo");
 	}
@@ -43,7 +44,7 @@ sub install {
 		`$sudo mkdir -p $dest_base_path` or die "\nmkdir: $!";
 	}
 
-	if (`diff -w "$source_path" "$dest_path"`) {
+	if (!(-e "$dest_path") || `diff -w "$source_path" "$dest_path"`) {
 		print "Installing $pretty_path\n";
 		`$sudo cp -i "$source_path" "$dest_path"`;
 	}
