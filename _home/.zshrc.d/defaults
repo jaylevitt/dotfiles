@@ -10,10 +10,6 @@ export AUTOFEATURE=true
 export PYTHONPATH=/opt/local/lib/python2.5/site-packages
 export TM_SCRATCH_DIRECTORY="/Users/jay/Library/Application Support/TextMate/Scratch Files"
 
-if [[ $jay_home = "yes" ]]; then
-  export PATH="$PATH:$HOME/bin"
-fi
-
 # Sneaky default replacements for commands that don't take defaults
 
 if [[ $ostype = "Darwin" ]]; then
