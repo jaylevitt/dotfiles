@@ -6,9 +6,9 @@ use Cwd 'abs_path';
 sub main {
 
 	if (`uname -s` =~ /Darwin/) {
-		install("HOME/Library/KeyBindings/DefaultKeyBinding.dict");
-		install("HOME/Library/Application Support/TextMate/KeyBindings.dict");
-		install("ROOT/etc/zshenv");
+		install("_home/Library/KeyBindings/DefaultKeyBinding.dict");
+		install("_home/Library/Application Support/TextMate/KeyBindings.dict");
+		install("_root/etc/zshenv");
 	}
 
 }
@@ -19,8 +19,8 @@ sub install {
 	$home = $ENV{'HOME'};
 	my ($volume, $base_path, $file_name) = File::Spec->splitpath($source_path);
 	$dest_base_path = $base_path;
-	$dest_base_path =~ s|^HOME/|$home/|;
-	$dest_base_path =~ s|^ROOT/|/|;	
+	$dest_base_path =~ s|^_home/|$home/|;
+	$dest_base_path =~ s|^_root/|/|;	
 	$dest_path = "$dest_base_path$file_name";
 
 	$pretty_path = $dest_path;
