@@ -17,6 +17,7 @@ sub main {
 
   install("_home/.ackrc");
   install("_home/.gitconfig");
+  install("_home/.gitignore");
   
 	if (`uname -s` =~ /Darwin/) {
 		install("_home/Library/KeyBindings/DefaultKeyBinding.dict");
