@@ -8,6 +8,7 @@ sub main {
 	if (`uname -s` =~ /Darwin/) {
 		install("HOME/Library/KeyBindings/DefaultKeyBinding.dict");
 		install("HOME/Library/Application Support/TextMate/KeyBindings.dict");
+		install("ROOT/etc/zshenv");
 	}
 
 }
@@ -19,6 +20,7 @@ sub install {
 	my ($volume, $base_path, $file_name) = File::Spec->splitpath($source_path);
 	$dest_base_path = $base_path;
 	$dest_base_path =~ s|^HOME/|$home/|;
+	$dest_base_path =~ s|^ROOT/|/|;	
 	$dest_path = "$dest_base_path$file_name";
 
 	$pretty_path = $dest_path;
