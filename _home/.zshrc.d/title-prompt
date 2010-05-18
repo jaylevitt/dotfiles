@@ -26,7 +26,7 @@ elif [[ $macname = "macbook2-wired.home.jay.fm" ]]; then
 elif [[ $macname = "macpro.home.jay.fm" ]]; then
     prompt_L="$blue%U"
 else
-    prompt_l="$black%U"
+    prompt_L="$black%U"
 fi
 
 prompt_R="$black%u"
