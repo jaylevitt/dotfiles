@@ -6,26 +6,38 @@ use Cwd 'abs_path';
 sub main {
 
 	if (`uname -s` =~ /Darwin/) {
-		install("home/Library/KeyBindings/DefaultKeyBinding.dict");
+		install("HOME/Library/KeyBindings/DefaultKeyBinding.dict");
+		install("HOME/Library/Application Support/TextMate/KeyBindings.dict");
 	}
 
 }
 
 sub install {
-	my ($source_path)                     = @_;
-	my ($volume, $base_path, $file_name) = File::Spec->splitpath($source_path);
+	my ($source_path) = @_;
 
 	$home = $ENV{'HOME'};
+	my ($volume, $base_path, $file_name) = File::Spec->splitpath($source_path);
 	$dest_base_path = $base_path;
 	$dest_base_path =~ s|^HOME/|$home/|;
 	$dest_path = "$dest_base_path$file_name";
-	print "Installing $dest_path\n";
+
+	$pretty_path = $dest_path;
+	$pretty_path =~ s|^$home/|~/|;
+
+	print "Installing $pretty_path";
 
 	unless (-d "$dest_base_path") {
-		`mkdir -p $dest_base_path` or die "mkdir: $!";
+		`mkdir -p $dest_base_path` or die "\nmkdir: $!";
 	}
 
-	`cp -i $source_path $dest_path` or die "cp: $!";
+	if (`diff "$source_path" "$dest_path"`) {
+		print "\n";
+		`cp -i "$source_path" "$dest_path"` or die "\ncp: $!";
+	}
+	else
+	{
+		print "...skipping\n";
+	}
 }
 
 main
