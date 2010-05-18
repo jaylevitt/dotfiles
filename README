@@ -1,0 +1,7 @@
+System Preferences > Keyboard > Keyboard Shortcuts
+  Application: TextMate
+    Menu Title: Previous File Tab
+    Shortcut: Command-Shift-[
+
+    Menu Title: Next File Tab
+    Shortcut: Command-Shift-]

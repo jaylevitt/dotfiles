@@ -1,0 +1,31 @@
+#!/usr/bin/env perl
+
+use File::Spec;
+use Cwd 'abs_path';
+
+sub main {
+
+	if (`uname -s` =~ /Darwin/) {
+		install("home/Library/KeyBindings/DefaultKeyBinding.dict");
+	}
+
+}
+
+sub install {
+	my ($source_path)                     = @_;
+	my ($volume, $base_path, $file_name) = File::Spec->splitpath($source_path);
+
+	$home = $ENV{'HOME'};
+	$dest_base_path = $base_path;
+	$dest_base_path =~ s|^HOME/|$home/|;
+	$dest_path = "$dest_base_path$file_name";
+	print "Installing $dest_path\n";
+
+	unless (-d "$dest_base_path") {
+		`mkdir -p $dest_base_path` or die "mkdir: $!";
+	}
+
+	`cp -i $source_path $dest_path` or die "cp: $!";
+}
+
+main
