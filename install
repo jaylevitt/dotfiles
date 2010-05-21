@@ -27,6 +27,18 @@ sub main {
 		install("_root/etc/paths.d/100-macports", "sudo");
 		install("_root/etc/paths.d/500-default", "sudo");
 		remove("/etc/paths", "sudo");
+		
+		`defaults write com.apple.Terminal FocusFollowsMouse -string YES`;
+		
+		`defaults write sync_clipboard_to_pasteboard true`;
+    `defaults sync_pasteboard true`;
+    `defaults sync_pasteboard_to_clipboard true`;
+    `defaults sync_pasteboard_to_primary true`;
+    `defaults sync_primary_on_select true`;
+    `defaults wm_click_through true`;
+    `defaults wm_ffm true`;
+    `defaults wm_focus_on_new_window true`;
+    
 	}
 
 }
