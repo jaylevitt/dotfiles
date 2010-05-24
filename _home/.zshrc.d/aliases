@@ -23,7 +23,6 @@ fi
 alias l="ls $LS_FLAGS"
 alias ll="ls -l $LS_FLAGS"
 # alias ri="fri -P"
-alias hexdump="hexdump -C"
 alias trunc=":>"
 alias cls="clear"
 
