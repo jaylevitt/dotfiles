@@ -1,33 +1,34 @@
 # Title bar/prompt
+# A little hacky; title-prompt-config will get reloaded by the 
+# general .zshrc.d reader, but we don't care about its output
+# at that point.  The important thing is that title-prompt-config
+# is machine-specific and won't get overwritten by the dotfiles install.
+#
 # TODO: encapsulate this better in functions once I learn shell functions!
 # TODO: Think about adding git branch: http://www.gnegg.ch/2008/04/git-branch-in-zsh-prompt/
 #   and maybe using WATCHFMT/LOGCHECK. MAILCHECK, or TMOUT/TRAPALRM somehow to cache it?
-
-setopt prompt_subst
-setopt transient_rprompt
 
 blue=$'%{\e[34m%}' 		# %{ chars don't add to length of prompt %}
 red=$'%{\e[31m%}'
 black=$'%{\e[30m%}'
 magenta=$'%{\e[35m%}'
 
+setopt prompt_subst
+setopt transient_rprompt
+
 title_L=$'%{\e]2;'		# \e]2;title bar\a
 title_R=$'\a%}'
 title_text="%m:%~"		# %m = machine name, %~ = current directory
 title_full="$title_L$title_text$title_R"
 
-macname=$(uname -n)
-if [[ "$HOSTNAME" = "micro.home.jay.fm" ]]; then
-    prompt_L="$red%U"		# %Uunderlined-text%u
-elif [[ $macname = "macbook.home.jay.fm" ]]; then
-    prompt_L="$magenta%U"
-elif [[ $macname = "macbook2-wired.home.jay.fm" ]]; then
-    prompt_L="$magenta%U"
-elif [[ $macname = "macpro.home.jay.fm" ]]; then
-    prompt_L="$blue%U"
-else
-    prompt_l="$black%U"
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+debian_chroot=$(cat /etc/debian_chroot)
 fi
+
+# title-prompt-config should be something like:
+# prompt_L="$red%U"
+
+source ~/.zshrc.d/title-prompt-config
 
 prompt_R="$black%u"
 prompt_text="%1~"			# %1~ = rightmost component of current directory
@@ -40,7 +41,7 @@ else
     prompt_state="%#"
 fi
 
-prompt_full="$prompt_L$prompt_text$prompt_R$prompt_state "
+prompt_full="${debian_chroot:+[$debian_chroot] }$prompt_L$prompt_text$prompt_R$prompt_state "
 # TODO: I like the status idea, but annoying that it doesn't reset itself
 # prompt_status='%(?..(%?%) )' 
 export PS1=$'$title_full$prompt_status$prompt_full'

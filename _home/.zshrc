@@ -37,7 +37,7 @@ export HELPDIR=~/.zsh-help
 
 ostype=$(uname)
 hostname=$(hostname)
-if [[ $hostname =~ /home.jay.fm/ ]]; then
+if [[ "$hostname" =~ /home.jay.fm/ ]]; then
   jay_home="yes"
 fi
 
