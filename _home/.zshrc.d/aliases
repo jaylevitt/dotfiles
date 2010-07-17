@@ -42,6 +42,7 @@ function cdt {
 
 
 # Finder interaction
+alias fdc="open ."
 alias cdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt cd`' 
 alias pushdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt pushd`' 
 
