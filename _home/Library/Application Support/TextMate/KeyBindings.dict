@@ -8,6 +8,10 @@
 	<string>insertNewline:</string>
 	<key></key>
 	<string>nextCompletion:</string>
+	<key>~ </key>
+	<string>nextCompletion:</string>
+	<key>~$ </key>
+	<string>previousCompletion:</string>
 	<key>$</key>
 	<string>previousCompletion:</string>
 	<key>$</key>
@@ -36,12 +40,6 @@
 	<string>moveSelectionRight:</string>
 	<key>^A</key>
 	<string>enterLineAppendMode:</string>
-	<key>^S</key>
-	<string>ISIM_reverseIncrementalSearch:</string>
-	<key>^T</key>
-	<string>transposeWords:</string>
-	<key>^U</key>
-	<string>lowercaseWord:</string>
 	<key>^g</key>
 	<string>changeCaseOfLetter:</string>
 	<key>^j</key>
@@ -50,10 +48,16 @@
 	<string>reformatText:</string>
 	<key>^r</key>
 	<string>executeSelectionInsertingOutput:</string>
+	<key>^S</key>
+	<string>ISIM_reverseIncrementalSearch:</string>
 	<key>^s</key>
 	<string>ISIM_incrementalSearch:</string>
 	<key>^t</key>
 	<string>transpose:</string>
+	<key>^T</key>
+	<string>transposeWords:</string>
+	<key>^U</key>
+	<string>lowercaseWord:</string>
 	<key>^u</key>
 	<string>uppercaseWord:</string>
 	<key>^w</key>

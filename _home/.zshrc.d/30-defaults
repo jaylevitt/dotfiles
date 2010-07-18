@@ -10,8 +10,6 @@ export AUTOFEATURE=true
 export PYTHONPATH=/opt/local/lib/python2.5/site-packages
 export TM_SCRATCH_DIRECTORY="/Users/jay/Library/Application Support/TextMate/Scratch Files"
 
-# Sneaky default replacements for commands that don't take defaults
-
 if [[ $ostype = "Darwin" ]]; then
   export EDITOR="mate_wait" # crontab doesn't support "mate -w", but TextMate looks at its own name when called
 elif [[ -e "/usr/local/bin/mate" ]]; then
@@ -19,6 +17,8 @@ elif [[ -e "/usr/local/bin/mate" ]]; then
 else
   export EDITOR="vi"
 fi
+
+# Sneaky default replacements via aliases, for commands that don't take defaults
 
 alias df="df -h"
 alias du="du -h"
@@ -28,4 +28,4 @@ export LS_FLAGS="-FGh"
 alias ls="ls $LS_FLAGS"
 alias schroot='LANG="" schroot -p -c'
 alias sudo='command sudo '				# let zsh aliases work in subshells of sudo
-
+alias unison="unison -ui text"
