@@ -1,22 +1,39 @@
 [user]
-	name = Jay Levitt
-	email = jay@jay.fm
+name = Jay Levitt
+email = jay@jay.fm
+
 [github]
-	user = jaylevitt
+user = jaylevitt
+
 [color]
-  diff = auto
-	status = auto
-	branch = auto
+diff = auto
+status = auto
+branch = auto
+
 [merge]
-	tool = xxdiff
+tool = xxdiff
+
 [alias]
-  unstage = reset HEAD
-  st = status
-  ci = commit
-  br = branch
-  co = checkout
-  df = diff
-  lg = log -p
+unstage = reset HEAD
+st = status
+ci = commit
+br = branch
+co = checkout
+df = diff
+lg = log -p
 
 [diff "ruby"]
-  funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+
+# from Darren Hall
+[alias]
+l = log --graph --oneline
+sl = shortlog
+kill = reset --hard
+oops = reset --soft HEAD^
+undo = reset --hard ORIG_HEAD
+redo = commit --amend
+
+[color]
+ui = auto
+
