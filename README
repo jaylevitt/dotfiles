@@ -1,3 +1,7 @@
+MANUAL STEPS
+
+1. Give TextMate consistent shortcuts:
+
 System Preferences > Keyboard > Keyboard Shortcuts
   Application: TextMate
     Menu Title: Previous File Tab
@@ -5,3 +9,5 @@ System Preferences > Keyboard > Keyboard Shortcuts
 
     Menu Title: Next File Tab
     Shortcut: Command-Shift-]
+
+TODO: Use git to merge changes, instead of kludgy manual file copies

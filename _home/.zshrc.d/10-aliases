@@ -44,3 +44,24 @@ function cdt {
 alias cdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt cd`' 
 alias pushdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt pushd`' 
 
+# From Darren Hall
+
+Function git-alias () {
+        if [[ -z $1 || $1 = '-h' || $1 = '--help' ]]
+        then
+                print "Usage: $0 [OPTIONS]... [ALIAS] [COMMAND]"
+                print
+                print "       -h, --help      display usage"
+                print "       -l, --list      list defined aliases"
+                print "       -u, --unset     remove defined alias"
+                print
+        elif [[ $1 = '-l' || $1 = '--list' ]]
+        then
+                git config --list | grep '^alias'
+        elif [[ $1 = '-u' || $1 = '--unset' ]]
+        then
+                [[ ! -z $2 ]] && git config --global --unset alias.$2
+        else
+                git config --global alias.$1 $2
+        fi
+}
