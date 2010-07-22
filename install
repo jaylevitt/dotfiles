@@ -8,12 +8,12 @@ sub main {
 	install("_root/etc/zshenv", "sudo");
 	install("_home/.zshenv");
 	install("_home/.zshrc");
-	install("_home/.zshrc.d/aliases");
-	install("_home/.zshrc.d/completion");
-	install("_home/.zshrc.d/defaults");
-	install("_home/.zshrc.d/keys");
-	install("_home/.zshrc.d/title-prompt");
-	install("_home/.zshrc.d/x-display");
+	install("_home/.zshrc.d/10-aliases");
+	install("_home/.zshrc.d/20-completion");
+	install("_home/.zshrc.d/30-defaults");
+	install("_home/.zshrc.d/40-keys");
+	install("_home/.zshrc.d/50-title-prompt");
+	install("_home/.zshrc.d/60-x-display");
 
   install("_home/.ackrc");
   install("_home/.gitconfig");
