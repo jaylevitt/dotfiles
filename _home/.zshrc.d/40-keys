@@ -20,4 +20,5 @@ bindkey '\C-w' 		        kill-region	       					# (p. 87)
 bindkey '^Z'			undo
 bindkey '\eq'			push-line-or-edit					# (p. 100)
 bindkey '\ee'			edit-command-line					# (p. 138)
+bindkey '\xe'           edit-command-line                   # mac bash standard
 
