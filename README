@@ -1,6 +1,15 @@
 MANUAL STEPS
 
-1. Give TextMate consistent shortcuts:
+* Make symlinks to the following:
+
+ln -s _home/.zshrc.d ~/.zshrc.d
+ln _home/.ackrc ~/.ackrc
+ln _home/.gitconfig ~/.gitconfig
+ln _home/.gitignore ~/.gitignore
+ln _home/.zshenv ~/.zshenv
+ln _home/.zshrc ~/.zshrc
+
+* Give TextMate consistent shortcuts:
 
 System Preferences > Keyboard > Keyboard Shortcuts
   Application: TextMate

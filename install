@@ -6,19 +6,7 @@ use Cwd 'abs_path';
 sub main {
 
 	install("_root/etc/zshenv", "sudo");
-	install("_home/.zshenv");
-	install("_home/.zshrc");
-	install("_home/.zshrc.d/10-aliases");
-	install("_home/.zshrc.d/20-completion");
-	install("_home/.zshrc.d/30-defaults");
-	install("_home/.zshrc.d/40-keys");
-	install("_home/.zshrc.d/50-title-prompt");
-	install("_home/.zshrc.d/60-x-display");
 
-  install("_home/.ackrc");
-  install("_home/.gitconfig");
-  install("_home/.gitignore");
-  
 	if (`uname -s` =~ /Darwin/) {
 		install("_home/Library/KeyBindings/DefaultKeyBinding.dict");
 		install("_home/Library/Application Support/TextMate/KeyBindings.dict");
