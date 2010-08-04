@@ -8,6 +8,7 @@ ln _home/.gitconfig ~/.gitconfig
 ln _home/.gitignore ~/.gitignore
 ln _home/.zshenv ~/.zshenv
 ln _home/.zshrc ~/.zshrc
+ln _home/.irbrc ~/.irbrc
 
 * Give TextMate consistent shortcuts:
 
