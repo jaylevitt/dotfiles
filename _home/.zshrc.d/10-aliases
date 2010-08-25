@@ -51,7 +51,6 @@ function git-remv () {
 }
 
 # From Darren Hall
-
 Function git-alias () {
         if [[ -z $1 || $1 = '-h' || $1 = '--help' ]]
         then
@@ -70,4 +69,8 @@ Function git-alias () {
         else
                 git config --global alias.$1 $2
         fi
+}
+
+function du-size () {
+  perl -e'%h=map{/.\s/;99**(ord$&&7)-$`,$_}`du -h -x /`;print@h{sort%h}'
 }
