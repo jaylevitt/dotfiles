@@ -31,6 +31,8 @@ function apropos ()
   command apropos $* | egrep -v '\((2|3|3X|3x|3p|3pm|3tcl|3ssl|ntcl|n)\)' 
 }
 
+function cd2 { cd $1/$1 }
+
 function cdt {
 	DocPath="$(osascript -e 'tell app "TextMate" to return path of first document')" 
 
