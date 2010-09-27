@@ -16,9 +16,13 @@ magenta=$'%{\e[35m%}'
 setopt prompt_subst
 setopt transient_rprompt
 
+source ~/.zshrc.d/title-prompt-config
+
+
 title_L=$'%{\e]2;'		# \e]2;title bar\a
+title_text="$prompt_machine:%~"      # %m = machine name, %~ = current directory
 title_R=$'\a%}'
-title_text="%m:%~"		# %m = machine name, %~ = current directory
+
 title_full="$title_L$title_text$title_R"
 
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -27,8 +31,6 @@ fi
 
 # title-prompt-config should be something like:
 # prompt_L="$red%U"
-
-source ~/.zshrc.d/title-prompt-config
 
 prompt_R="$black%u"
 prompt_text="%1~"			# %1~ = rightmost component of current directory
@@ -46,3 +48,4 @@ prompt_full="${debian_chroot:+[$debian_chroot] }$prompt_L$prompt_text$prompt_R$p
 # prompt_status='%(?..(%?%) )' 
 export PS1=$'$title_full$prompt_status$prompt_full'
 export PS4='+%N:%i:%_>'	# script debugging
+
