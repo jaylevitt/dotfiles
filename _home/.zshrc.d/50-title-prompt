@@ -12,6 +12,7 @@ blue=$'%{\e[34m%}' 		# %{ chars don't add to length of prompt %}
 red=$'%{\e[31m%}'
 black=$'%{\e[30m%}'
 magenta=$'%{\e[35m%}'
+green=$'%{\e[32m%}'
 
 setopt prompt_subst
 setopt transient_rprompt
