@@ -26,6 +26,5 @@ alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 alias hexdump="hexdump -C"
 export LS_FLAGS="-FGh"
 alias ls="ls $LS_FLAGS"
-alias schroot='LANG="" schroot -p -c'
 alias sudo='command sudo '				# let zsh aliases work in subshells of sudo
 alias unison="unison -ui text"
