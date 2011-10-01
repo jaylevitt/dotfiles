@@ -50,8 +50,11 @@ function git-remv () {
     git mv $1 $2
 }
 
-# From Darren Hall
+# From http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
+autoload -U zmv
+alias mmv='noglob zmv -W'
 
+# From Darren Hall
 Function git-alias () {
         if [[ -z $1 || $1 = '-h' || $1 = '--help' ]]
         then
@@ -71,7 +74,6 @@ Function git-alias () {
                 git config --global alias.$1 $2
         fi
 }
-
 # Hosts
 alias aws="ssh aws.tiptap.com"
 

@@ -66,3 +66,8 @@ zstyle ':completion:*' group-name ''
 # I'm confused.
 #
 # zstyle ':completion:*:-command-:*:(commands|builtins|reserved-words|aliases)' group-name commands
+
+# Handle "git " aliases as well as "git-" ones
+# From https://mail.google.com/mail/u/0/?hl=en&shva=1#label/zsh-users/12b55bf941b51422
+
+zstyle ':completion:*:git:*' user-commands ${${(k)commands[(I)git-*]}#git-}
