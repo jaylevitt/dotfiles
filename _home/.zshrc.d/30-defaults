@@ -19,6 +19,7 @@ else
 fi
 
 export PGDATA=/usr/local/var/postgres
+export ARCHFLAGS='-arch x86_64'
 
 # Sneaky default replacements via aliases, for commands that don't take defaults
 

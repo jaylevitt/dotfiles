@@ -71,3 +71,23 @@ Function git-alias () {
                 git config --global alias.$1 $2
         fi
 }
+
+# Hosts
+alias aws="ssh aws.tiptap.com"
+
+# Ruby
+
+function runit {
+    ruby -I"lib:test" test/unit/$1
+}
+
+function rfunc {
+    ruby -I"lib:test" test/functional/$1
+}
+
+alias reseed="bundle exec rake db:migrate VERSION=0 && bundle exec rake db:migrate && bundle exec rake db:seed"
+alias rake="bundle exec rake"
+alias unicorn="bundle exec unicorn -c config/unicorn.conf"
+
+# Pragprog book sample code
+function bookcp { cp -R ~/src/play/The\ RSpec\ Book/cucumber_rails/$1/ . }

@@ -5,8 +5,6 @@
 # is machine-specific and won't get overwritten by the dotfiles install.
 #
 # TODO: encapsulate this better in functions once I learn shell functions!
-# TODO: Think about adding git branch: http://www.gnegg.ch/2008/04/git-branch-in-zsh-prompt/
-#   and maybe using WATCHFMT/LOGCHECK. MAILCHECK, or TMOUT/TRAPALRM somehow to cache it?
 
 blue=$'%{\e[34m%}' 		# %{ chars don't add to length of prompt %}
 red=$'%{\e[31m%}'
@@ -41,8 +39,8 @@ else
     prompt_state="%#"
 fi
 
-prompt_full="${debian_chroot:+[$debian_chroot] }$prompt_L$prompt_text$prompt_R$prompt_state "
+prompt_full="${debian_chroot:+[$debian_chroot] }$prompt_L$prompt_text$prompt_R"
 # TODO: I like the status idea, but annoying that it doesn't reset itself
 # prompt_status='%(?..(%?%) )' 
-export PS1=$'$title_full$prompt_status$prompt_full'
+export PS1=$'$title_full$prompt_status$prompt_full$(prompt_git_info)$prompt_state '
 export PS4='+%N:%i:%_>'	# script debugging

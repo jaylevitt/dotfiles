@@ -1,1 +1,6 @@
 --smart-case
+--type-add=ruby=Gemfile,Gemfile.lock
+--type-add=js=.coffee
+--ignore-dir=tmp
+--ignore-dir=vendor
+--ignore-dir=02-vendor

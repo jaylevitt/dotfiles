@@ -11,7 +11,7 @@ status = auto
 branch = auto
 
 [merge]
-tool = xxdiff
+tool = "p4merge"
 
 [alias]
 unstage = reset HEAD
