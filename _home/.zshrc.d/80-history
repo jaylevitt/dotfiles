@@ -1,6 +1,14 @@
-function zshaddhistory() {
-    print -sr -- ${1%%$'\n'}
-    fc -p ~/.zsh_history_detail
-    print -sr "${1%%$'\n'} ### ${PWD} `date '+%Y-%m-%d %R'`"
-}
+# function zshaddhistory() {
+#   print -Sr -- "${1%%$'\n'}"
+#   fc -p ~/.zsh_history_detail
+#   print -Sr -- "${1%%$'\n'} ### ${PWD} $(date '+%Y-%m-%d %R')"
+#   return 1
+# }
 
+# function zshaddhistory() {
+#    print -sr -- "${1%%$'\n'}"
+#    fc -p ~/.zsh_history_detail
+#    local line="${1%%$'\n'}"
+#    print -sr -- "${(z)line}" "### ${PWD} $(date '+%Y-%m-%d %R')"
+#    return 1
+#  }

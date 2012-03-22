@@ -16,3 +16,5 @@ export CXXFLAGS="$CFLAGS"
 
 # PostgreSQL building
 export ARCHFLAGS="-arch i386"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

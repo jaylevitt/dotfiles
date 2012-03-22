@@ -3,7 +3,7 @@ WORDCHARS=${WORDCHARS//\/}
 
 # Completion: echo ~/.z<TAB> (p. 230)
 autoload -U compinit
-compinit
+compinit -u
 # bashcompinit - could use bash completions somehow
 setopt magic_equal_subst	# complete after = sign, as in export PATH=
 unsetopt list_ambiguous		# show me all matches if ambiguous, instead of filling partially
@@ -20,7 +20,7 @@ zstyle ':completion:*' list-separator '#'
 
 zmodload zsh/complist
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
-bindkey -M listscroll q send-break 
+bindkey -M listscroll q send-break
 bindkey -M listscroll '^[[B' down-line-or-history
 # Apparently, there's no corresponding up-line command in listscroll mode
 
@@ -48,7 +48,7 @@ zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 # This would separate each category of completions: external command, builtin command,
 # alias, reserved word, parameter, etc.  I don't like it.
 #
-# TODO: Correction... I do like it for /etc/p* (from /etc/z*, p246).. 
+# TODO: Correction... I do like it for /etc/p* (from /etc/z*, p246)..
 # what didn't I like it for?
 #
 zstyle ':completion:*' group-name ''

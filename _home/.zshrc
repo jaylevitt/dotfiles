@@ -42,7 +42,8 @@ if [[ "$hostname" =~ /home.jay.fm/ ]]; then
 fi
 
 
-files=(`echo ~/.zshrc.d/*`) 
+files=(`echo ~/.zshrc.d/*`)
 for file in $files ; do
     source $file
 done
+__rvm_project_rvmrc

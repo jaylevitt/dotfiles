@@ -1,7 +1,7 @@
-if [[ $hostname = "macpro.home.jay.fm" ]] then
-  alias eab="open ~/.zshrc.tmproj"
+if [[ $hostname = "speedbook.home.jay.fm" ]] then
+  alias eab="open -W ~/.zshrc.tmproj"
 else
-  alias eab="echo Do this from macpro!"
+  alias eab="echo Do this from speedbook!"
   function pullab ()
     {
       cp ~/.zshrc ~/.zshrc.old
@@ -10,11 +10,14 @@ else
         cp $file $file.old
       done
 
-      scp macpro:.zshrc ~/.zshrc
-      scp -r macpro:.zshrc.d ~
+      scp speedbook:.zshrc ~/.zshrc
+      scp -r speedbook:.zshrc.d ~
       rm ~/.zshrc.d/.DS_Store
+      uan
     }
 fi
+
+alias uan=". ~/.zshrc"
 
 if [[ $ostype != "Darwin" ]] then
   alias qmv="EDITOR=mate_wait qmv"
@@ -28,13 +31,13 @@ alias cls="clear"
 
 function apropos ()
 {
-  command apropos $* | egrep -v '\((2|3|3X|3x|3p|3pm|3tcl|3ssl|ntcl|n)\)' 
+  command apropos $* | egrep -v '\((2|3|3X|3x|3p|3pm|3tcl|3ssl|ntcl|n)\)'
 }
 
 function cdt {
-	DocPath="$(osascript -e 'tell app "TextMate" to return path of first document')" 
+	DocPath="$(osascript -e 'tell app "TextMate" to return path of first document')"
 
-	DocDir="$(dirname "$DocPath")" 
+	DocDir="$(dirname "$DocPath")"
 	echo "$PWD -> $DocDir"
 	cd $DocDir
 }
@@ -42,8 +45,8 @@ function cdt {
 
 # Finder interaction
 alias fdc="open ."
-alias cdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt cd`' 
-alias pushdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt pushd`' 
+alias cdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt cd`'
+alias pushdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt pushd`'
 
 function git-remv () {
     mv $2 $1
@@ -74,8 +77,9 @@ Function git-alias () {
                 git config --global alias.$1 $2
         fi
 }
+
 # Hosts
-alias aws="ssh aws.tiptap.com"
+alias gwssh="ssh -t -A gate.tiptap.com ssh -t -A"
 
 # Ruby
 
