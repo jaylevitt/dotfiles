@@ -24,6 +24,8 @@ export PGDATA=/usr/local/var/postgres
 export PGDATABASE=mindset_dev
 export ARCHFLAGS='-arch x86_64'
 
+export AUTOJUMP_KEEP_SYMLINKS=1
+
 # Sneaky default replacements via aliases, for commands that don't take defaults
 
 alias df="df -h"

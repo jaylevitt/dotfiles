@@ -44,6 +44,6 @@ fi
 prompt_full="${debian_chroot:+[$debian_chroot] }$prompt_L$prompt_text$prompt_R"
 # TODO: I like the status idea, but annoying that it doesn't reset itself
 # prompt_status='%(?..(%?%) )'
-export PS1=$'$title_full$prompt_status$prompt_full$(prompt_git_info)$prompt_state '
+export PS1=$'$title_full$prompt_status$prompt_full$(git_super_status)$prompt_state '
 export PS4='+%N:%i:%_>'	# script debugging
 
