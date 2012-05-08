@@ -1,6 +1,7 @@
 # require 'ruby-debug'
 
 alias q exit
+alias hush ActiveRecord::Base.logger.level = 2
 
 # user_id = lambda do
 #     case `whoami`
