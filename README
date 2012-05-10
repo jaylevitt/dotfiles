@@ -2,7 +2,7 @@ MANUAL STEPS
 
 * Make symlinks to the following:
 
-ln -s _home/.zshrc.d ~/.zshrc.d
+ln -s $PWD/_home/.zshrc.d ~/.zshrc.d
 ln _home/.ackrc ~/.ackrc
 ln _home/.gitconfig ~/.gitconfig
 ln _home/.gitignore ~/.gitignore
