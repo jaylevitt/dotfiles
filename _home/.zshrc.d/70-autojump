@@ -1,1 +1,5 @@
-  [[ -f ~/.autojump/etc/profile.d/autojump.zsh ]] && source ~/.autojump/etc/profile.d/autojump.zsh
+if  [ -f ~/.autojump/etc/profile.d/autojump.zsh ]; then
+  source ~/.autojump/etc/profile.d/autojump.zsh
+elif [ -f /usr/local/etc/autojump ]; then
+  source /usr/local/etc/autojump
+fi
