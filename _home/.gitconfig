@@ -1,39 +1,74 @@
 [user]
-name = Jay Levitt
-email = jay@jay.fm
+	name = Jay Levitt
+	email = jay@jay.fm
 
 [github]
-user = jaylevitt
+	user = jaylevitt
+	token = 1c63ccf12dd49cbb5c8871bf0369b37e
 
 [color]
-diff = auto
-status = auto
-branch = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = auto
 
 [merge]
-tool = "p4merge"
+	tool = p4merge
+	summary = true
 
 [alias]
-unstage = reset HEAD
-st = status
-ci = commit
-br = branch
-co = checkout
-df = diff
-lg = log -p
+	br = branch
+	ci = commit
+	co = checkout
+	cp = cherry-pick -x
+	df = diff
+	lg = log -p
+	st = status
+
+
+	# index and recent commits
+	unstage  = reset HEAD
+	uncommit = reset --soft HEAD^
+	addall   = !sh -c 'git add . && git add -u'
+
+	# pull/push
+	outgoing = log -u origin/master..master
+
+	# branches
+	publish  = "!f() { git push origin $1; git branch --set-upstream $1 origin/$1; }; f"
+
+	# logs
+	changes   = log --pretty=format:"%h %cr %cn %Cgreen%s%Creset" --name-status
+	short     = log --pretty=format:"%h %cr %cn %Cgreen%s%Creset"
+	changelog = log --pretty=format:" * %s"
+	files     = log --name-status
+
+	gl = log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"
 
 [diff "ruby"]
-funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
 
 # from Darren Hall
 [alias]
-l = log --graph --oneline
-sl = shortlog
-kill = reset --hard
-oops = reset --soft HEAD^
-undo = reset --hard ORIG_HEAD
-redo = commit --amend
+	l = log --graph --oneline
+	sl = shortlog
+	undo = reset --hard ORIG_HEAD
+	redo = commit --amend
 
-[color]
-ui = auto
+[core]
+	quotepath = false
+	excludesfile = /Users/jay/.gitignore_global
 
+[gc]
+auto = 1
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[push]
+	default = tracking
+[credential]
+	helper = osxkeychain
