@@ -7,8 +7,6 @@ export AUTOFEATURE=true
 # export LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
 
 # Defaults for subsystems
-export PYTHONPATH=/opt/local/lib/python2.5/site-packages
-export TM_SCRATCH_DIRECTORY="/Users/jay/Library/Application Support/TextMate/Scratch Files"
 
  # crontab doesn't support "mate -w", but TextMate looks at its own name when called; does subl?
 if [[ $ostype = "Darwin" ]]; then
@@ -35,7 +33,6 @@ alias hexdump="hexdump -C"
 export LS_FLAGS="-FGh"
 alias ls="ls $LS_FLAGS"
 alias sudo='command sudo '				# let zsh aliases work in subshells of sudo
-alias unison="unison -ui text"
 
 function wcfind() {
  dir=$1
@@ -59,7 +56,11 @@ export GIT_AUTHOR_EMAIL="jay@jay.fm"
 export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
 export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
 
-export RUBY_GC_MALLOC_LIMIT=59000000
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=1000000000
+export RUBY_HEAP_FREE_MIN=500000
 
 export TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
 export USE_BUNDLER=try
