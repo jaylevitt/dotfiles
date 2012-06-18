@@ -45,8 +45,8 @@ function cdt {
 
 # Finder interaction
 alias fdc="open ."
-alias cdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt cd`'
-alias pushdf='eval `osascript /Applications/Utilities/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt pushd`'
+alias cdf='eval `osascript /Applications/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt cd`'
+alias pushdf='eval `osascript /Applications/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt pushd`'
 
 function git-remv () {
     mv $2 $1
