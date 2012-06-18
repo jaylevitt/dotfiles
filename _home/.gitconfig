@@ -13,9 +13,19 @@
 	interactive = auto
 	ui = auto
 
+[rebase]
+ 	autosquash = true
+ 	
 [merge]
-	tool = p4merge
-	summary = true
+	keepBackup = false
+  tool = custom
+  summary = true
+        
+[mergetool "custom"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
 
 [alias]
 	br = branch
@@ -31,6 +41,10 @@
 	unstage  = reset HEAD
 	uncommit = reset --soft HEAD^
 	addall   = !sh -c 'git add . && git add -u'
+
+	fixup  = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+	squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+	ri     = rebase --interactive --autosquash
 
 	# pull/push
 	outgoing = log -u origin/master..master
