@@ -57,7 +57,7 @@ function git-remv () {
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-# From Darren Hall
+# git
 Function git-alias () {
         if [[ -z $1 || $1 = '-h' || $1 = '--help' ]]
         then
@@ -78,8 +78,8 @@ Function git-alias () {
         fi
 }
 
-# Hosts
-alias gwssh="ssh -t -A gate.tiptap.com ssh -t -A"
+# alias hub to git
+eval "$(hub alias -s)"
 
 # Ruby
 
@@ -95,5 +95,3 @@ alias reseed="bundle exec rake db:migrate VERSION=0 && bundle exec rake db:migra
 alias rake="bundle exec rake"
 alias unicorn="bundle exec unicorn -c config/unicorn.conf"
 
-# Pragprog book sample code
-function bookcp { cp -R ~/src/play/The\ RSpec\ Book/cucumber_rails/$1/ . }

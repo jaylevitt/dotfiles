@@ -19,7 +19,7 @@
 [merge]
 	keepBackup = false
   tool = custom
-  summary = true
+  log = true
         
 [mergetool "custom"]
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE" "$PWD/$MERGED"
@@ -73,6 +73,7 @@
 [core]
 	quotepath = false
 	excludesfile = /Users/jay/.gitignore_global
+	mergeoptions = -Xignore-all-space
 
 [gc]
 auto = 1
@@ -86,3 +87,5 @@ auto = 1
 	default = tracking
 [credential]
 	helper = osxkeychain
+[branch]
+	autosetuprebase = always
