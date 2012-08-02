@@ -12,6 +12,7 @@ export AUTOFEATURE=true
 if [[ $ostype = "Darwin" ]]; then
   export EDITOR="subl -w"
   export BUNDLER_EDITOR="subl"
+  export QWANDRY_EDITOR="subl"
 elif [[ -e "/usr/local/bin/mate" ]]; then
   export EDITOR="mate"
 else
@@ -31,6 +32,7 @@ alias du="du -h"
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 alias hexdump="hexdump -C"
 export LS_FLAGS="-FGh"
+alias knife="noglob knife"
 alias ls="ls $LS_FLAGS"
 alias sudo='command sudo '				# let zsh aliases work in subshells of sudo
 
